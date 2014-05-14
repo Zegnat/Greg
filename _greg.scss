@@ -1,15 +1,15 @@
-@mixin greg($cols, $gutter, $breakpoint: 480px) {
-    $colWidth: ($gutter + 100%) / $cols - $gutter;
-    $sharedCSS: "";
+@mixin greg($columns, $gutter, $breakpoint: 480px) {
+    $columnWidth: ($gutter + 100%) / $columns - $gutter;
+    $classNames: "";
 
-    @for $col from 1 through $cols {
-        .col_#{$col} {
-            width: $col * ($colWidth + $gutter) - $gutter;
+    @for $column from 1 through $columns {
+        .col_#{$column} {
+            width: $column * ($columnWidth + $gutter) - $gutter;
         }
-        $sharedCSS: $sharedCSS + ".col_#{$col},";
+        $classNames: $classNames + ".col_#{$column},";
     }
 
-    #{$sharedCSS} {
+    #{$classNames} {
         float: left;
         display: block;
         margin-left: $gutter;
