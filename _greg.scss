@@ -1,5 +1,4 @@
 @mixin greg($cols, $gutter, $breakpoint: 480px) {
-    $i: $cols; // Total # of cols
     $gutters: $cols - 1; // # of gutters
     $gutterWidth: $gutters * $gutter; // Total width of gutters
     $gridWidth: 100% - $gutterWidth; // Usable width of grid
