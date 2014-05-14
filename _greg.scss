@@ -1,4 +1,4 @@
-@mixin greg($cols,$gutter) {
+@mixin greg($cols, $gutter, $breakpoint: 480px) {
     $i: $cols; // Total # of cols
     $gutters: $cols - 1; // # of gutters
     $gutterWidth: $gutters * $gutter; // Total width of gutters
@@ -13,8 +13,8 @@
             margin-left:$gutter;
         }
         .col_#{$cols}:first-child { margin-left:0; }
-        // Full width at 480px;
-        @media only screen and (max-width:480px) {
+        // Full width at specified breakpoint;
+        @media only screen and (max-width: $breakpoint) {
             .col_#{$cols} {
                 width:100%;
                 margin-left:0;
