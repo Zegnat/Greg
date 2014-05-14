@@ -4,22 +4,29 @@
     $gridWidth: 100% - $gutterWidth; // Usable width of grid
     $colWidth: $gridWidth / $cols; // Single col width
     $width: 100%;
+    $sharedCSS: "";
+
     @while $cols > 0 {
         .col_#{$cols} {
             width: $width;
-            float:left;
-            display:block;
-            margin-left:$gutter;
         }
-        .col_#{$cols}:first-child { margin-left:0; }
-        // Full width at specified breakpoint;
-        @media only screen and (max-width: $breakpoint) {
-            .col_#{$cols} {
-                width:100%;
-                margin-left:0;
-            }
-        }
+
+        $sharedCSS: $sharedCSS + ".col_#{$cols},";
+
         $cols: $cols - 1;
         $width: $width - ($colWidth + $gutter);
+    }
+
+    #{$sharedCSS} {
+        float: left;
+        display: block;
+        margin-left: $gutter;
+        &:first-child { margin-left: 0; }
+        @media only screen and (max-width: $breakpoint) {
+            & {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
     }
 }
