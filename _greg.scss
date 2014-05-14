@@ -1,24 +1,28 @@
-@mixin greg($columns, $gutter, $breakpoint: 480px) {
+@mixin greg($columns, $gutter, $breakpoint: 480px, $limit: ()) {
   $column-width: ($gutter + 100%) / $columns - $gutter;
   $class-names: '';
 
   @for $column from 1 through $columns {
-    .col_#{$column} {
-      width: $column * ($column-width + $gutter) - $gutter;
+    @if length($limit) == 0 or index($limit, $column) {
+      .col_#{$column} {
+        width: $column * ($column-width + $gutter) - $gutter;
+      }
+  
+      $class-names: $class-names + '.col_#{$column},';
     }
-
-    $class-names: $class-names + '.col_#{$column},';
   }
 
-  #{$class-names} {
-    display: block;
-    float: left;
-    margin-left: $gutter;
-    &:first-child { margin-left: 0; }
-    @media only screen and (max-width: $breakpoint) {
-      & {
-        margin-left: 0;
-        width: 100%;
+  @if $class-names != '' {
+    #{$class-names} {
+      display: block;
+      float: left;
+      margin-left: $gutter;
+      &:first-child { margin-left: 0; }
+      @media only screen and (max-width: $breakpoint) {
+        & {
+          margin-left: 0;
+          width: 100%;
+        }
       }
     }
   }
