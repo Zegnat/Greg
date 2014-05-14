@@ -1,17 +1,12 @@
 @mixin greg($cols, $gutter, $breakpoint: 480px) {
     $colWidth: ($gutter + 100%) / $cols - $gutter;
-    $width: 100%;
     $sharedCSS: "";
 
-    @while $cols > 0 {
-        .col_#{$cols} {
-            width: $width;
+    @for $col from 1 through $cols {
+        .col_#{$col} {
+            width: $col * ($colWidth + $gutter) - $gutter;
         }
-
-        $sharedCSS: $sharedCSS + ".col_#{$cols},";
-
-        $cols: $cols - 1;
-        $width: $width - ($colWidth + $gutter);
+        $sharedCSS: $sharedCSS + ".col_#{$col},";
     }
 
     #{$sharedCSS} {
