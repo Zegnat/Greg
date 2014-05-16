@@ -1,61 +1,52 @@
-Greg (Great responsive easy grids)
-====
-This is an Über simple responsive and fluid grid mixin for Sass.
+# Zegnat/Greg
 
-Greg will take the number of columns you need and the gutter spacing you require to create a fluid grid based on those parameters.
+Based on [Greg by Everywhere.is](https://github.com/everywhereis/Greg), where it is subscribed as:
 
-The grid will default to full-width columns at 480px.
+> […] an Über simple responsive and fluid grid mixin for Sass.
 
-For example you could make a 10 column grid with 2% width gutters using the following code;
-```
-.myClass {
-    width:100%;
-    @include greg(10,2%);
-}
-```
+The name is an abbreviation for “great responsive easy grids”. The mixin is completely compatible with the superior SASS compiler [Libsass](http://libsass.org).
 
-This will generate the following CSS
-```
-.col_10 { width:100%; margin-left:2%; float:left; }
-.col_9 { width:89.8%; margin-left:2%; float:left; }
-.col_8 { width:79.6%; margin-left:2%; float:left; }
-.col_7 { width:69.4%; margin-left:2%; float:left; }
-.col_6 { width:59.2%; margin-left:2%; float:left; }
-.col_5 { width:49.0%; margin-left:2%; float:left; }
-.col_4 { width:38.8%; margin-left:2%; float:left; }
-.col_3 { width:28.6%; margin-left:2%; float:left; }
-.col_2 { width:18.4%; margin-left:2%; float:left; }
-.col_1 { width:8.2%; margin-left:2%; float:left; }
+## Usage
+
+### Basic usage
+
+Greg builds a basic column grid based on a defined number of columns and gutter width. This example will generate a 5 column grid with 2% wide gutters:
+
+```scss
+@include greg(5, 2%);
 ```
 
-And the HTML could go a little something like this;
-```
-<ul class="myClass">
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-    <li class="col col_1"></li>
-</ul>
-<ul class="myClass">
-    <li class="col col_3"></li>
-    <li class="col col_7"></li>
-</ul>
-<ul class="myClass">
-    <li class="col col_10"></li>
-</ul>
-<ul class="myClass">
-    <li class="col col_2"></li>
-    <li class="col col_2"></li>
-    <li class="col col_2"></li>
-    <li class="col col_2"></li>
-    <li class="col col_2"></li>
-</ul>
+Using classes ranged from `col_1` through `col_5` will allow for columns of different widths to be used in the design. For example:
+
+```html
+<div class="container">
+    <div class="col_2"></div>
+    <div class="col_3"></div>
+</div>
 ```
 
-Check out http://making.everywhere.is/greg/ to see this in action.
+Will result in one column spanning the first 2 grid columns followed by one filling the last 3, for a total of 5 columns. Note that there is no container class included in Greg.
+
+### Setting a mobile breakpoint
+
+Greg takes a single breakpoint where the columns will collapse and be displayed below eachother. By default this happens on screens with a width of 480 pixels or less. But this width can be set to anything using a third parameter:
+
+```scss
+@include greg(5, 2%, 240px);
+```
+
+### Limiting the output classes
+
+Zegnat/Greg was made to have a smaller generated (output) CSS than its previous version. As such a fourth parameter can be passed to specify the column widths you are planning to use.
+
+In the basic usage example Greg will generate classes for all 5 possible column widths even though our HTML only uses 2 (`col_2` and `col_3`). The fourth parameter can be set so Greg will only generate the specific classes `col_2` and `col_3`:
+
+```scss
+@include greg(5, 2%, 480px, 2 3)
+```
+
+Any valid [SASS list](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#lists) of numbers will work, as long as the numbers are within the number of columns specified in the first parameter.
+
+## Licence
+
+Greg is released under [the MIT license](LICENSE). The original version and API by Everywhere.is and this rewritten version with its space-saving features by Martijn van der Ven.
