@@ -47,6 +47,114 @@ In the basic usage example Greg will generate classes for all 5 possible column 
 
 Any valid [SASS list](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#lists) of numbers will work, as long as the numbers are within the number of columns specified in the first parameter.
 
+## Greg vs. Zegnat/Greg
+
+Greg was [presented](http://everywhere.is/opinionated/greg-a-super-simple-sass-mixin/) with a basic grid example based on the following HTML:
+
+```html
+<ul class="gregWrapper">
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+    <li class="col col_1"></li>
+</ul>
+<ul class="gregWrapper">
+    <li class="col col_10"></li>
+</ul>
+<ul class="gregWrapper">
+    <li class="col col_7"></li>
+    <li class="col col_3"></li>
+</ul>
+<ul class="gregWrapper">
+    <li class="col col_10"></li>
+</ul>
+<ul class="gregWrapper">
+    <li class="col col_2"></li>
+    <li class="col col_2"></li>
+    <li class="col col_2"></li>
+    <li class="col col_2"></li>
+    <li class="col col_2"></li>
+</ul>
+```
+
+And the mixin was called as follows:
+
+```scss
+.gregWrapper { @include greg(10, 2%); }
+```
+
+In the original Greg this resulted in:
+
+```css
+.gregWrapper .col_1 {
+  width: 8.2%; }
+.gregWrapper .col_2 {
+  width: 18.4%; }
+.gregWrapper .col_3 {
+  width: 28.6%; }
+.gregWrapper .col_4 {
+  width: 38.8%; }
+.gregWrapper .col_5 {
+  width: 49%; }
+.gregWrapper .col_6 {
+  width: 59.2%; }
+.gregWrapper .col_7 {
+  width: 69.4%; }
+.gregWrapper .col_8 {
+  width: 79.6%; }
+.gregWrapper .col_9 {
+  width: 89.8%; }
+.gregWrapper .col_10 {
+  width: 100%; }
+.gregWrapper .col_1, .gregWrapper .col_2, .gregWrapper .col_3, .gregWrapper .col_4, .gregWrapper .col_5, .gregWrapper .col_6, .gregWrapper .col_7, .gregWrapper .col_8, .gregWrapper .col_9, .gregWrapper .col_10 {
+  display: block;
+  float: left;
+  margin-left: 2%; }
+  .gregWrapper .col_1:first-child, .gregWrapper .col_2:first-child, .gregWrapper .col_3:first-child, .gregWrapper .col_4:first-child, .gregWrapper .col_5:first-child, .gregWrapper .col_6:first-child, .gregWrapper .col_7:first-child, .gregWrapper .col_8:first-child, .gregWrapper .col_9:first-child, .gregWrapper .col_10:first-child {
+    margin-left: 0; }
+  @media only screen and (max-width: 480px) {
+    .gregWrapper .col_1, .gregWrapper .col_2, .gregWrapper .col_3, .gregWrapper .col_4, .gregWrapper .col_5, .gregWrapper .col_6, .gregWrapper .col_7, .gregWrapper .col_8, .gregWrapper .col_9, .gregWrapper .col_10 {
+      margin-left: 0;
+      width: 100%; } }
+```
+
+Using Zegnat/Greg and its limiter function the SASS would be:
+
+```scss
+.gregWrapper { @include greg(10, 2%, 480px, 1 10 7 3 2); }
+```
+
+And the output only:
+
+```css
+.gregWrapper .col_1 {
+  width: 8.2%; }
+.gregWrapper .col_2 {
+  width: 18.4%; }
+.gregWrapper .col_3 {
+  width: 28.6%; }
+.gregWrapper .col_7 {
+  width: 69.4%; }
+.gregWrapper .col_10 {
+  width: 100%; }
+.gregWrapper .col_1, .gregWrapper .col_2, .gregWrapper .col_3, .gregWrapper .col_7, .gregWrapper .col_10 {
+  display: block;
+  float: left;
+  margin-left: 2%; }
+  .gregWrapper .col_1:first-child, .gregWrapper .col_2:first-child, .gregWrapper .col_3:first-child, .gregWrapper .col_7:first-child, .gregWrapper .col_10:first-child {
+    margin-left: 0; }
+  @media only screen and (max-width: 480px) {
+    .gregWrapper .col_1, .gregWrapper .col_2, .gregWrapper .col_3, .gregWrapper .col_7, .gregWrapper .col_10 {
+      margin-left: 0;
+      width: 100%; } }
+```
+
 ## Licence
 
 Greg is released under [the MIT license](LICENSE). The original version and API by Everywhere.is and this rewritten version with its space-saving features by Martijn van der Ven.
