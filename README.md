@@ -1,6 +1,6 @@
 # Zegnat/Greg
 
-Based on [Greg by Everywhere.is](https://github.com/everywhereis/Greg), where it is subscribed as:
+Based on [Greg by Everywhere.is](https://github.com/everywhereis/Greg), where it is described as:
 
 > […] an Über simple responsive and fluid grid mixin for Sass.
 
