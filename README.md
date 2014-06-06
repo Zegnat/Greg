@@ -92,36 +92,116 @@ And the mixin was called as follows:
 In the original Greg this resulted in:
 
 ```css
-.gregWrapper .col_1 {
-  width: 8.2%; }
-.gregWrapper .col_2 {
-  width: 18.4%; }
-.gregWrapper .col_3 {
-  width: 28.6%; }
-.gregWrapper .col_4 {
-  width: 38.8%; }
-.gregWrapper .col_5 {
-  width: 49%; }
-.gregWrapper .col_6 {
-  width: 59.2%; }
-.gregWrapper .col_7 {
-  width: 69.4%; }
-.gregWrapper .col_8 {
-  width: 79.6%; }
-.gregWrapper .col_9 {
-  width: 89.8%; }
 .gregWrapper .col_10 {
-  width: 100%; }
-.gregWrapper .col_1, .gregWrapper .col_2, .gregWrapper .col_3, .gregWrapper .col_4, .gregWrapper .col_5, .gregWrapper .col_6, .gregWrapper .col_7, .gregWrapper .col_8, .gregWrapper .col_9, .gregWrapper .col_10 {
-  display: block;
+  width: 100%;
   float: left;
+  display: block;
   margin-left: 2%; }
-  .gregWrapper .col_1:first-child, .gregWrapper .col_2:first-child, .gregWrapper .col_3:first-child, .gregWrapper .col_4:first-child, .gregWrapper .col_5:first-child, .gregWrapper .col_6:first-child, .gregWrapper .col_7:first-child, .gregWrapper .col_8:first-child, .gregWrapper .col_9:first-child, .gregWrapper .col_10:first-child {
-    margin-left: 0; }
-  @media only screen and (max-width: 480px) {
-    .gregWrapper .col_1, .gregWrapper .col_2, .gregWrapper .col_3, .gregWrapper .col_4, .gregWrapper .col_5, .gregWrapper .col_6, .gregWrapper .col_7, .gregWrapper .col_8, .gregWrapper .col_9, .gregWrapper .col_10 {
-      margin-left: 0;
-      width: 100%; } }
+.gregWrapper .col_10:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_10 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_9 {
+  width: 89.8%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_9:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_9 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_8 {
+  width: 79.6%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_8:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_8 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_7 {
+  width: 69.4%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_7:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_7 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_6 {
+  width: 59.2%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_6:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_6 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_5 {
+  width: 49.0%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_5:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_5 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_4 {
+  width: 38.8%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_4:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_4 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_3 {
+  width: 28.6%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_3:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_3 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_2 {
+  width: 18.4%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_2:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_2 {
+    width: 100%;
+    margin-left: 0; } }
+.gregWrapper .col_1 {
+  width: 8.2%;
+  float: left;
+  display: block;
+  margin-left: 2%; }
+.gregWrapper .col_1:first-child {
+  margin-left: 0; }
+@media only screen and (max-width: 480px) {
+  .gregWrapper .col_1 {
+    width: 100%;
+    margin-left: 0; } }
 ```
 
 Using Zegnat/Greg and its limiter function the SASS would be:
